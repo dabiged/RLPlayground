@@ -55,7 +55,7 @@ Below is a snapshot of the solution at every 50th timestep.
 
 __Step 0__
 At this point we are taking completely random actions to generate a large batch of transitions. Once out batch of transistions is sufficiently large, we being to train a neural network to appoximate the value of taking an action given any state.
-![Episode 0][plots/LL/LunarLander_Training_step0.gif]
+![Episode 0](plots/LL/LunarLander_Training_step0.gif)
 
 __Step 10__
 ![Episode 10][plots/LL/LunarLander_Training_step10.gif]
