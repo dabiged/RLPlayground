@@ -24,7 +24,7 @@ __Rules__
 
 ## Solution
 
-To solve this problem I use a epilson greedy Deep Q network. This method take the current state as the input and based on a history of past action,state,next-state,reward transitions attempts to predict what the optimal action to take is to maximise the reward.
+To solve this problem I use a epilson greedy Deep Q network. This method takes the current state as the input and based on a history of past `action, state, next-state, reward` transitions attempts to predict what the optimal action to take is to maximise the reward.
 
 __Epsilon Function__
 
@@ -33,6 +33,7 @@ At each step in an episode the network must choose to exploit the current strate
 ![Epsilon Function](plots/LL/epsilon.png)
 
 __Reward Function__
+
 This is a plot of the reward as a function of episode. 
 
 ![Reward vs Episode](plots/LL/RewardperEp.png)
@@ -50,48 +51,51 @@ This is followed by a period of greatly decreased variability in the reward for 
 
 *End Episodes*
 
-Around episode 280 the lander makes its first landing with both legs on the landing pad, and there is an immediate increase in reward. This is the most frustrating part of the simulation to watch as the lander will often go straight down onto the landing pad, then either fly away, or continue to hover over the landing pad at very low altitude for an extended period. The source of variability in this section is mostly due to the lander ending with one or two legs in the landing pad, or hovering for too long above the landing pada before landing.
+Around episode 280 the lander makes its first landing with both legs on the landing pad, and there is an immediate increase in reward. This is the most frustrating part of the simulation to watch as the lander will often go straight down onto the landing pad, then either fly away, or continue to hover over the landing pad at very low altitude for an extended period. The source of variability in this section is mostly due to the lander ending with one or two legs in the landing pad, or hovering for too long above the landing pad before landing.
 
 Following this we see an increased level of variability. The majority of these massive negative reward episodes is when the lander attempts an aggressive descent and ends up upside down or over corrects and flys off the edge of the screen. By the end of the training period we are regularly getting scores over the 'solved' level.
 
 ## Snapshots
-Below is a snapshot of the solution at every 50th timestep.
+Below is a snapshot of some episodes:
 
 __Step 0__
 
-At this point we are taking completely random actions to generate a large batch of transitions. Once out batch of transistions is sufficiently large, we being to train a neural network to appoximate the value of taking an action given any state.
-
 ![Episode 0](plots/LL/LunarLander_Training_step0.gif)
+
+At this point we are taking completely random actions to generate a large batch of transitions. Once our collection of transistions is sufficiently large, we being to train a neural network to appoximate the value of taking an action given any state.
+
 
 __Step 10__
 
 ![Episode 10](plots/LL/LunarLander_Training_step10.gif)
 
-Agent has learned to control descent velocity but not orientation.
+The agent has learned to control descent velocity but not orientation.
 
 __Step 50__
 
-By this stage the lander has learned basic hovering behaviour. Note that due to the fuel consumption penalty hovering until the end of the simulation is not a good strategy. Also note that due to the heavy crashing penalty it also prefers to land on it's legs even if it is uncontrolled.
-
 ![Episode 50](plots/LL/LunarLander_Training_step50.gif)
+
+By this stage the lander has learned basic hovering behaviour. Note that due to the fuel consumption penalty hovering until the end of the simulation is not a good strategy. Also note that due to the heavy crashing penalty it also prefers to land on it's legs even if it is uncontrolled.
 
 __Step 100__
 
-This is an excellent example of the middle period stability. The agent now understands basic hovering skills and is targetting the landing pad, but is unable to land on it.
-
 ![Episode 100](plots/LL/LunarLander_Training_step100.gif)
+
+This is an excellent example of the middle period stability. The agent now understands basic hovering skills and is targetting the landing pad, but is unable to land on it.
 
 __Step 150__
 
-Again the agent clearly knows how to hover and is targetting the landing pad, but hasn't quite learned how to slow down to land.
 
 ![Episode 150](plots/LL/LunarLander_Training_step150.gif)
 
+Again the agent clearly knows how to hover and is targetting the landing pad, but hasn't quite learned how to slow down to land.
+
+
 __Step 250__
 
-Agent is landing lander on one leg right in the middle of the pad, but is not oriented correctly and breaks the leg.
-
 ![Episode 250](plots/LL/LunarLander_Training_step250.gif)
+
+Agent is landing lander on one leg right in the middle of the pad, but is not oriented correctly and breaks the leg.
 
 __Step 350__
 
@@ -104,8 +108,8 @@ A solved solution.
 
 ![Action Histogram](plots/LL/ActionHistogram.png)
 
-Above is a histogram of the actions taken every 50th episode. You can clearly see that the first training episode has a high epsilon as the actions are roughly uniformly distributed.
+Above is a histogram of the actions taken every 50th episode. You can clearly see that the first training episode has an epsilon of one and the actions are roughly uniformly distributed.
 
-As we get to the middle 'hovering' period there is a greater focus on stability with the main engine action becoming dominant and the left and right thrusters being used to keep the lander upright.
+As we get to the middle 'hovering' period there is a greater focus on stability with the main engine action becoming dominant and the left and right thrusters being used equally to keep the lander upright. Note that episode 200 the lander continues to hover until a timeout period is reached and the simulation ends *without a crash*.
 
 Towards the later part of the training the agent learns that *do nothing* is a valid policy once on the landing pad.
