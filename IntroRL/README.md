@@ -1,8 +1,74 @@
+## RL Playground
+In this work I use an epsilon greedy Deep Q Network to solve various problems from AIGym.
+
+# Cartpole-v0
+A description of the problem is as follows:
+You are to attempt to balance an inverted pendulum by moving a slide either left or right.
+If the angle on the pendulum exceeds 15 degrees you fail.
+If the cart moves off the edge of the playing area you fail.
+
+__Reward Function__
+The reward given to the agent is 1 per step of the simulation provided the pendulum is upright. As such, duration = reward for this problem.
+This is a plot of the reward as a function of episode.
+
+![Reward vs Episode](plots/CP/RewardperEp.png)
+
+*Early Episodes*
+
+Start with taking random action. As the pole starts to fall the agent is unable to prevent it from falling.
+
+*Middle Episodes*
+
+Around episode 75 we see a slight uptick in reward. In this instance the agent has corrected the falling pendulum, but in doing so has overcorrected.
+
+*End Episodes*
+
+Around episode 125 the agent learns to balance the pole when it is moving in either direction.A
+
+## Snapshots
+Below is a snapshot of some episodes:
+
+__Step 0__
+
+![Episode 0](plots/CP/CartPole_Training_step0.gif)
+
+Once the unstable pole begins to fall the agent is powerless to stop it.
+
+__Step 80__
+
+![Episode 80](plots/CP/CartPole_Training_step80.gif)
+
+The agent is able to arrest the fall by moving with the pole but overcorrects and causes it to fall the other way.
+
+
+__Step 137__
+
+![Episode 137](plots/CP/CartPole_Training_step137.gif)
+
+The agent realises that in order to prevent overcorrection it needs to move much slower and maintain control.
+
+
+__Step 260__
+
+![Episode 260](plots/CP/CartPole_Training_step160.gif)
+
+The agent has now learned to start out slow and travel in 1 direction. When it encounters the edge of play area and doesn't know what to do.
+
+__Step 280__
+
+![Episode 280](plots/CP/CartPole_Training_step280.gif)
+
+Thus far the pole has been exclusively directed to the right. The agent now sends the pole to the left, but not having seen this side of the play area spends a number of episodes understanding how to stop the pole falling on this side.
+
+__Step 420__
+
+![Episode 480](plots/CP/CartPole_Training_step480.gif)
+Agent has learnt to balance the pole!
+
+
+
+
 # Lunar Lander -v2
-
-## Outline
-In this work I use an epsilon greedy Deep Q Network to solve the LunarLander-v2 problem from AIGym.
-
 A description of the problem is as follows:
 
 Your goal is to land a small craft on a landing pad using 3 actions, rotate left, rotate right and fire main engine.
