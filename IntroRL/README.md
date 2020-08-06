@@ -8,6 +8,7 @@ If the angle on the pendulum exceeds 15 degrees you fail.
 If the cart moves off the edge of the playing area you fail.
 
 __Reward Function__
+
 The reward given to the agent is 1 per step of the simulation provided the pendulum is upright. As such, duration = reward for this problem.
 This is a plot of the reward as a function of episode.
 
@@ -21,9 +22,15 @@ Start with taking random action. As the pole starts to fall the agent is unable 
 
 Around episode 75 we see a slight uptick in reward. In this instance the agent has corrected the falling pendulum, but in doing so has overcorrected.
 
+Around episode 125 the agent learns to balance the pole when it is moving in either direction.
+
+At Around episode 225 we see a few spikes in the reward value. This is where the agent has learnt to send the pole over, correct, then send the pole over in the same direction. 
+
 *End Episodes*
 
-Around episode 125 the agent learns to balance the pole when it is moving in either direction.A
+Between episodes 270 - 300 there is a substantial drop in reward. This is because the agent is now exploring the left side of the play area, which it has not really encountered before. 
+
+By episode 460 we see a stable solution using oscillation in both direction.
 
 ## Snapshots
 Below is a snapshot of some episodes:
@@ -63,6 +70,7 @@ Thus far the pole has been exclusively directed to the right. The agent now send
 __Step 420__
 
 ![Episode 480](plots/CP/CartPole_Training_step480.gif)
+
 Agent has learnt to balance the pole!
 
 
