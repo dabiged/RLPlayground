@@ -1,5 +1,5 @@
-## RL Playground
-In this work I use an epsilon greedy Deep Q Network to solve various problems from AIGym.
+# Solving RL problems with DQN and DDQN algorithms
+In this work I use an epsilon greedy Deep Q Networks and Double Deep Q Networks to solve various problems from AIGym.
 
 # Cartpole-v0
 A description of the problem is as follows:
