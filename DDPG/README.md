@@ -32,7 +32,6 @@ Then I tried some more dramatic changes:
 
 1. Introduced non-standard rewards
 
-
 Ultimately the issue was around the discarding of end state rewards referenced above. As soon as I dropped the terminal state modifier to the bellman equation the algorithm worked.
 
 ## Results
