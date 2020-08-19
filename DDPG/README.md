@@ -78,9 +78,43 @@ Oscillations around vertical reduced.
 
 ## MountainCarContinuous-v0
 
-Reward plot for the latest MountainCarContinuous-v0.
+Reward plot for the latest MountainCarContinuous-v0. The agent is able to solve the problem in the second episode but is unable to consistently solve it until the 30th.
 
 ![Reward vs Episode](plots/MCC/RewardperEp.png)
+
+#### Episode Examples
+
+**0th Episode**
+Initial exploration of the state space. As the length of each episode if 1000 and our batchsize is 128, we are able to spend the majority of the first episode exploiting our strategy and are almost able to solve it on the first shot.
+
+![Episode 0](plots/MCC/MCC-v0_Ep0.gif)
+
+**5th Episode**
+
+Correct policy is executed initially but it isn't quite good enough to get to the goal. The agent then tries again and is successful
+
+![Episode 5](plots/MCC/MCC-v0_Ep5.gif)
+
+**10th Episode**
+
+Here the agent isn't really using the other hill to gain momentum, but is able to get to the goal.
+
+![Episode 10](plots/MCC/MCC-v0_Ep10.gif)
+
+**20th Episode**
+Here is the first episode where the agent gets to a policy that really works well. You can see it leverages the other hill.
+
+![Episode 20](plots/MCC/MCC-v0_Ep20.gif)
+
+**25th Episode**
+This is the last episode where the agent is not successful. I don't know if it fails to solve due to the exploration noise thwarting the agent at the wrong time or a poor policy.
+
+![Episode 25](plots/MCC/MCC-v0_Ep25.gif)
+
+**30th Episode**
+This is the final state of the agent. It solves the problem rapidly.
+
+![Episode 25](plots/MCC/MCC-v0_Ep30.gif)
 
 ## BipedalWalker
 
