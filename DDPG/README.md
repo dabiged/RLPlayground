@@ -36,8 +36,44 @@ Ultimately the issue was around the discarding of end state rewards referenced a
 
 ## Results
 ### Pendulum-v0
+#### Rewards
+This is a plot of the reward given to the agent as a function of the episode number. Note that the policy starts around halfway through the first episode. 
+
+By the 13th episode the agent has learned to balance the pendulum. The variation in the reward after this point is entirely due to the random starting location of the pendulum. The spike around episode 37 is where the pendulum started near the top. The dips at episode 21 and 39 are where the pendulum started near the top but not close enough to take the shortest route to the top, and the agent had to do a swing down-then-up to get the pendulum to the top.
 
 ![Reward vs Episode](plots/P/RewardperEp.png)
+
+#### Episode Examples
+
+**0th episode**
+
+The agent starts by taking completely random actions in an attempt to explore the state space, and build enough state-action-reward transition to do fill a batch for stochastic gradient decent. Once we have enough transitions the agent locks into a strong counter-clockwise action.
+
+![Episode 0](plots/P/Pendulum_Ep0.gif)
+
+**5th episode** 
+
+The agent has learnt to swing the pendulum up, but does not yet know how to get it vertical.
+
+![Episode 5](plots/P/Pendulum_Ep5.gif)
+
+**10th Episode**
+
+Pendulum is nearing vertical.
+
+![Episode 10](plots/P/Pendulum_Ep10.gif)
+
+**15th Episode**
+
+Agent has learnt to balance the pendulum. Note some oscillations still exist around perfectly vertical.
+
+![Episode 15](plots/P/Pendulum_Ep15.gif)
+
+**40th Episode**
+
+Oscillations around vertical reduced.
+
+![Episode 40](plots/P/Pendulum_Ep40.gif)
 
 
 ## MountainCarContinuous-v0
