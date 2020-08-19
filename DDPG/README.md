@@ -85,6 +85,7 @@ Reward plot for the latest MountainCarContinuous-v0. The agent is able to solve 
 #### Episode Examples
 
 **0th Episode**
+
 Initial exploration of the state space. As the length of each episode if 1000 and our batchsize is 128, we are able to spend the majority of the first episode exploiting our strategy and are almost able to solve it on the first shot.
 
 ![Episode 0](plots/MCC/MCC-v0_Ep00.gif)
@@ -107,11 +108,13 @@ Here is the first episode where the agent gets to a policy that really works wel
 ![Episode 20](plots/MCC/MCC-v0_Ep20.gif)
 
 **25th Episode**
+
 This is the last episode where the agent is not successful. I don't know if it fails to solve due to the exploration noise thwarting the agent at the wrong time or a poor policy.
 
 ![Episode 25](plots/MCC/MCC-v0_Ep25.gif)
 
 **30th Episode**
+
 This is the final state of the agent. It solves the problem rapidly.
 
 ![Episode 25](plots/MCC/MCC-v0_Ep30.gif)
