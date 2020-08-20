@@ -98,6 +98,22 @@ This is the final state of the agent. It solves the problem rapidly.
 
 ![Episode 25](plots/MCC/MCC-v0_Ep30.gif)
 
+
+## BiPedalWalker
+
+Reward plot for the latest BiPedalWalker. The agent is still unable to solve this environment with DDPG but it is close.
+
+Things I have tried to fix this:
++ added batchnorm1d's to the network and this has not helped.
++ Modified the reward function to add a 0.1 reward for not falling over. THis was to escape a local minimum that caused the walker to prefer a fast dive for the ground over a long period of standing, and attempting to walk and falling over.
+
+I suspect the issue with the system are presently twofold.
+1. This environment has terminal states unlike the previous 2 solved with DDPG. I wonder if this is the issue.
+2. This envionrment has a 26 dimensional state space that is not normalised. Contact point is a bool (actually an int from 0-1) but lidar measurements are distances (non-bounded floats). Perhaps normalising the environment would help.
+
+![Reward vs Episode](plots/MCC/RewardperEp.png)
+
+
 ## Mistakes I made implementing this
 1. I started on the BiPedalWalker gym. This is a gym with sparse rewards and large state space. This makes a poor choice for a learning problem. I spent far too long trying to get this working before I opted to change to a different gym to debug my algorithm.  Eventually switched to the mountaincarcontinuous problem which is also a poor choice due to sparse rewards and the difficulty in reaching an end state with random noise. When the algorithm did not work I switched to the inverted pendulum problem which has a much lower state and action space size and is a much better suited problem for learning.
 2. I did not scale my actor network outputs to the gym action space size. In the inverted pendulum problem you may apply torques of up to 2 units. In my initial work on this problem the outputs of my actor network was a tanh function which gave action values between -1 and 1. This was not suffucient to solve the problem.
