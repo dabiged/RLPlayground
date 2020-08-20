@@ -111,7 +111,7 @@ I suspect the issue with the system are presently twofold.
 1. This environment has terminal states unlike the previous 2 solved with DDPG. I wonder if this is the issue.
 2. This envionrment has a 26 dimensional state space that is not normalised. Contact point is a bool (actually an int from 0-1) but lidar measurements are distances (non-bounded floats). Perhaps normalising the environment would help.
 
-![Reward vs Episode](plots/MCC/RewardperEp.png)
+![Reward vs Episode](plots/BPW/RewardperEp.png)
 
 
 ## Mistakes I made implementing this
