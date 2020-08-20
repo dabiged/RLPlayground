@@ -98,14 +98,6 @@ This is the final state of the agent. It solves the problem rapidly.
 
 ![Episode 25](plots/MCC/MCC-v0_Ep30.gif)
 
-## BipedalWalker
-
-Reward plot for the latest BipedalWalker.
-
-![Reward vs Episode](plots/BPW/RewardperEp.png)
-
-
-
 ## Mistakes I made implementing this
 1. I started on the BiPedalWalker gym. This is a gym with sparse rewards and large state space. This makes a poor choice for a learning problem. I spent far too long trying to get this working before I opted to change to a different gym to debug my algorithm.  Eventually switched to the mountaincarcontinuous problem which is also a poor choice due to sparse rewards and the difficulty in reaching an end state with random noise. When the algorithm did not work I switched to the inverted pendulum problem which has a much lower state and action space size and is a much better suited problem for learning.
 2. I did not scale my actor network outputs to the gym action space size. In the inverted pendulum problem you may apply torques of up to 2 units. In my initial work on this problem the outputs of my actor network was a tanh function which gave action values between -1 and 1. This was not suffucient to solve the problem.
